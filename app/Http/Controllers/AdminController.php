@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Order;
 class AdminController extends Controller
 {
     public function view_category()
@@ -12,6 +13,7 @@ class AdminController extends Controller
         $data=category::all();
         return view('admin.category', compact('data'));
     }
+
     public function add_category(Request $request)
     {
         $data=new category;
@@ -19,6 +21,7 @@ class AdminController extends Controller
         $data->save();
         return redirect()->back()->with('message','Category Added Successfully');
     }
+    
     public function delete_category($id)
     {   
         $data=category::find($id);
@@ -87,5 +90,32 @@ class AdminController extends Controller
         }
         $product->save();
         return redirect()->back()->with('message','Product Updated Successfully!');
+    }
+
+    public function view_recycle()
+    {
+        return view('admin.view_recycle');
+    }
+
+    public function order()
+    {
+        $order=order::all();
+        return view('admin.order', compact('order'));
+    }
+
+    public function delivered($id)
+    {
+        $order=order::find($id);
+        $order->delivery_status="deliverd";
+        $order->payment_status="Paid";
+        $order->save;
+        return redirect()->back();
+    }
+
+    public function searchdata(Request $request)
+    {
+        $searchText=$request->search;
+        $order=order::where('name','LIKE',"%$searchText%")->orwhere('phone','LIKE',"%$searchText%")->orwhere('product_title','LIKE',"%$searchText%")->get();
+        return view('admin.order',compact('order'));
     }
 }

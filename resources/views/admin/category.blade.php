@@ -12,7 +12,7 @@
 
         .h2_font
         {
-            font_size: 40px;
+            font-size: 40px;
             padding-bottom: 40px;
         }
         
@@ -51,7 +51,7 @@
                 
                 <div class="div_center">
                     
-                    <h2 class="h2_font">Add category</h2>
+                    <h2 class="h2_font">Add Category</h2>
                     <form action="{{url('/add_category')}}" method="POST">
                       @csrf
                       <input class="input_color" type="text" name="category" placeholder="Write Category name">
