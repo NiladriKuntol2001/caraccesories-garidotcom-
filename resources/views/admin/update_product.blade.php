@@ -85,7 +85,7 @@
                 </div>
                 <div class="div_design">
                   <label>Current Product Image</label>
-                  <img style="margin:auto;" height="100" widht="100" src="/product/{{$product->image}}">
+                  <img style="margin:auto;" height="200px" width="200px" src="/product/{{$product->image}}">
                 </div>
                 <div class="div_design">
                   <label>Change Product Image Here</label>

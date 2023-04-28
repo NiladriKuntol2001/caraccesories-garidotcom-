@@ -32,7 +32,7 @@
       <div class="col-sm-6 col-md-4 col-lg-4" style="margin: auto; width:50%; padding: 30px">
                   
                      <div class="img-box">
-                        <img src="product/{{$product->image}}" alt="">
+                        <img width=200px height=200px src="product/{{$product->image}}" alt="">
                      </div>
                      <div class="detail-box">
                         <h5>
@@ -63,7 +63,7 @@
                                     <input type="submit" value="Add To Cart" class="option1">
                                  </div>                             
                               </div>
-                           </form>
+                        </form>
                      </div>
                   </div>
                </div>

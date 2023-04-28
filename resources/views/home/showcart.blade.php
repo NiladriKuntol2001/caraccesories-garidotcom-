@@ -65,17 +65,17 @@
               </div>
          @endif
 
-      <div class="center">
+        <div class="center">
         <table>
             <tr>
-                <th>Product Title</th>
-                <th>Product Quantity</th>
-                <th>Price</th>
-                <th>Image</th>
-                <th>Action</th>
+                <th class="th_deg">Product Title</th>
+                <th class="th_deg">Product Quantity</th>
+                <th class="th_deg">Price</th>
+                <th class="th_deg">Image</th>
+                <th class="th_deg">Action</th>
             </tr>
             <?php $totalprice=0; ?>
-            @foreach($cart for $cart)
+        @foreach($cart as $cart)
             <tr>
                 <td>{{$cart->product_title}}</td>
                 <td>{{$cart->quantity}}</td>
@@ -84,9 +84,10 @@
                 <td><a class="btn btn-danger" onclick="return confirm('Are you sure you want to remove?')" href="{{url('/remove_cart',$cart->id)}}"></a>Remove Product</td>
             </tr>
             <?php $totalprice = $totalprice + $cart->price ?>
-            @endforeach
+        @endforeach
+        
         </table>
-        <div>
+         <div>
             <h1 class="total_deg">Total Price: TK{{$totalprice}}</h1>
         </div>
         <div>
@@ -94,7 +95,8 @@
             <a href="{{url('cash_order')}}" class="btn btn-danger">Cash On Delivery</a>
             <a href="{{url('stripe', $totalprice)}}" class="btn btn-danger">Payment By Card</a>
         </div>
-      </div>
+      </div> 
+        
       <!-- footer start -->
       @include('home.footer')
       <!-- footer end -->

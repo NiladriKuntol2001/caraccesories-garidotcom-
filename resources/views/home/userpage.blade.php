@@ -41,7 +41,9 @@
       <!-- product section -->
       @include('home.product')
       <!-- end product section -->
-
+      <!-- product section -->
+      @include('home.resell')
+      <!-- end product section -->
       <!-- subscribe section -->
       @include('home.subscribe')
       <!-- end subscribe section -->

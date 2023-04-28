@@ -100,7 +100,7 @@
                            Fast Delivery
                         </h5>
                         <p>
-                           variations of passages of Lorem Ipsum available
+                           Delivery Within 3 Days
                         </p>
                      </div>
                   </div>
@@ -212,10 +212,10 @@
                      </div>
                      <div class="detail-box">
                         <h5>
-                           Free Shiping
+                           Free Shiping and Free assemble
                         </h5>
                         <p>
-                           variations of passages of Lorem Ipsum available
+                           No shiping cost needed along with free assemble
                         </p>
                      </div>
                   </div>
@@ -236,7 +236,7 @@
                            Best Quality
                         </h5>
                         <p>
-                           variations of passages of Lorem Ipsum available
+                           No. 1 product
                         </p>
                      </div>
                   </div>

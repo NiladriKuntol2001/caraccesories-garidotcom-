@@ -58,7 +58,7 @@
 
                             role="form" 
 
-                            action="{{ route('stripe.post') }}" 
+                            action="{{ route('stripe.post',$totalprice) }}" 
 
                             method="post" 
 
@@ -158,7 +158,7 @@
 
                             <div class="col-xs-12">
 
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ($100)</button>
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
 
                             </div>
 
@@ -167,7 +167,9 @@
                             
 
                     </form>
-
+                    <li style="text-align: center; font-size: 20px;">
+                           <a class="nav-link" href="{{url('/')}}">Return Home<span class="sr-only"></span></a>
+                    </li>
                 </div>
 
             </div>        
@@ -320,5 +322,5 @@ $(function() {
     }
 
 });
-</stripe>
+</script>
 </html>

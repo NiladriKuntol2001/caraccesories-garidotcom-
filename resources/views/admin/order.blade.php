@@ -79,9 +79,9 @@
                         <td><img class="img_size" src="/product/{{$order->image}}"></td>
                         <td>
                             @if($order->delivery_status=='processing')
-                            <a href="{{url('delivered',$order->id)}}" onclick="return confirm('Are you sure this product is delivered?')" class="btn btn-primary">Delivered</a>
+                                <a href="{{url('delivered',$order->id)}}" onclick="return confirm('Are you sure this product is delivered?')" class="btn btn-primary">Delivered</a>
                             @else
-                            <p style="color: green;">Delivered</p>
+                                <p style="color: green;">Delivered</p>
                             @endif
                         </td>
                     </tr>

@@ -1,6 +1,6 @@
 <section class="slider_section ">
             <div class="slider_bg_box">
-               <img src="images/homepage.jpg" alt="">
+               <img src="images/homepage3.png" alt="">
             </div>
             <div id="customCarousel1" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">
@@ -11,17 +11,17 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                    Sale 20% Off
+                                    Resell 
                                     </span>
                                     <br>
-                                    On Everything
+                                    Your Old Products
                                  </h1>
                                  <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                    Resell your old car accessories to the other customers 
                                  </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
-                                    Shop Now
+                                    <a href="{{url('resell_product')}}" class="btn1">
+                                    Resell Now
                                     </a>
                                  </div>
                               </div>
@@ -36,17 +36,17 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                    Sale 20% Off
+                                    Recycle
                                     </span>
                                     <br>
-                                    On Everything
+                                    Abandoned products to save environment
                                  </h1>
                                  <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                    Set a Recycle request to us we will collect your recycle products and offer exciting gifts.
                                  </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
-                                    Shop Now
+                                    <a href="{{url('show_profile')}}" class="btn1">
+                                    Recycle Now
                                     </a>
                                  </div>
                               </div>
@@ -61,16 +61,16 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                    Sale 20% Off
+                                    No. 1 Product
                                     </span>
                                     <br>
-                                    On Everything
+                                    Best for your car
                                  </h1>
                                  <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                    Shop with us and buy the best accessories for your car.
                                  </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
+                                    <a href="{{url('product_page')}}" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>

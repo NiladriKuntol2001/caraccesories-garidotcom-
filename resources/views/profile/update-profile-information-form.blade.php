@@ -22,7 +22,7 @@
                                         photoPreview = e.target.result;
                                     };
                                     reader.readAsDataURL($refs.photo.files[0]);
-                            " />
+                            "/>
 
                 <x-label for="photo" value="{{ __('Photo') }}" />
 

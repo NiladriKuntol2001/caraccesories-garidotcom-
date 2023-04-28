@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\Homeservice;
+use App\Models\Garagebook;
+use App\Models\Garage;
+use App\Models\Reorder;
+use App\Models\Recycle;
 class AdminController extends Controller
 {
     public function view_category()
@@ -92,23 +97,30 @@ class AdminController extends Controller
         return redirect()->back()->with('message','Product Updated Successfully!');
     }
 
-    public function view_recycle()
-    {
-        return view('admin.view_recycle');
-    }
-
     public function order()
     {
         $order=order::all();
         return view('admin.order', compact('order'));
     }
 
+    public function see_homeservice()
+    {
+        $homeservice=homeservice::all();
+        return view('admin.seehomeservice', compact('homeservice'));
+    }
+
+    public function see_garagebook()
+    {
+        $garagebook=garagebook::all();
+        return view('admin.seegaragebook', compact('garagebook'));
+    }
+
     public function delivered($id)
     {
         $order=order::find($id);
-        $order->delivery_status="deliverd";
+        $order->delivery_status="delivered";
         $order->payment_status="Paid";
-        $order->save;
+        $order->save();
         return redirect()->back();
     }
 
@@ -118,4 +130,76 @@ class AdminController extends Controller
         $order=order::where('name','LIKE',"%$searchText%")->orwhere('phone','LIKE',"%$searchText%")->orwhere('product_title','LIKE',"%$searchText%")->get();
         return view('admin.order',compact('order'));
     }
+
+    public function searchdatagarage(Request $request)
+    {
+        $searchText=$request->search;
+        $garagebook=garagebook::where('name','LIKE',"%$searchText%")->orwhere('phone','LIKE',"%$searchText%")->orwhere('garage','LIKE',"%$searchText%")->orwhere('shift','LIKE',"%$searchText%")->orwhere('address','LIKE',"%$searchText%")->get();
+        return view('admin.seegaragebook',compact('garagebook'));
+    }
+
+    public function searchdatahome(Request $request)
+    {
+        $searchText=$request->search;
+        $homeservice=homeservice::where('name','LIKE',"%$searchText%")->orwhere('phone','LIKE',"%$searchText%")->orwhere('shift','LIKE',"%$searchText%")->orwhere('service','LIKE',"%$searchText%")->get();
+        return view('admin.seehomeservice',compact('homeservice'));
+    }
+
+    public function view_garage()
+    {   
+        $garage=garage::all();
+        return view('admin.garage', compact('garage'));
+    }
+
+    public function add_garage(Request $request)
+    {
+        $garage=new garage;
+        $garage->garage_name=$request->garage_name;
+        $garage->garage_location=$request->garage_location;
+        $garage->save();
+        return redirect()->back()->with('message','Garage Added Successfully');
+    }
+
+    public function delete_garage($id)
+    {   
+        $garage=garage::find($id);
+        $garage->delete();
+        return redirect()->back()->with('message','Garage Deleted Successfully');
+    }
+
+    public function resellshow()
+    {
+        $reorder=reorder::all();
+        return view('admin.resellorder', compact('reorder'));
+    }
+
+    public function searchdataresell(Request $request)
+    {
+        $searchText=$request->search;
+        $reorder=reorder::where('name','LIKE',"%$searchText%")->orwhere('phone','LIKE',"%$searchText%")->orwhere('email','LIKE',"%$searchText%")->get();
+        return view('admin.resellorder',compact('reorder'));
+    }
+
+    public function view_recycle_offers()
+    {
+        $recycle=recycle::all();
+        return view('admin.showrecycleoffer', compact('recycle'));
+    }
+
+    public function reselldelivered($id)
+    {
+        $reorder=reorder::find($id);
+        $reorder->delivery_status="delivered";
+        $reorder->payment_status="Paid";
+        $reorder->save();
+        return redirect()->back();
+    }
+
+    public function searchdatarecycle(Request $request)
+    {
+        $searchText=$request->search;
+        $recycle=recycle::where('name','LIKE',"%$searchText%")->orwhere('phone','LIKE',"%$searchText%")->get();
+        return view('admin.showrecycleoffer',compact('recycle'));
+    }
+
 }
