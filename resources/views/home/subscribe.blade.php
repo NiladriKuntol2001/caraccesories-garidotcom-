@@ -5,11 +5,11 @@
                   <div class="col-md-6 offset-md-3">
                      <div class="subscribe_form ">
                         <div class="heading_container heading_center">
-                           <h3>Register and Start Shopping</h3>
+                           <h3 style="font-size: 40px; padding-bottom: 30px">Register and Start Shopping</h3>
                         </div>
-                        <p>Best Car accesspries online shop in market.</p>
+                        <p style="font-size: 30px; padding-bottom: 30px">Best Car accesspries online shop in market.</p>
                         <div class="btn-box">
-                           <a href="{{ route('register') }}" class="btn1">
+                           <a href="{{ route('register') }}" class="btn btn-primary">
                               Register Now
                            </a>
                         </div>

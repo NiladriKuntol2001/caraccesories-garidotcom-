@@ -85,6 +85,12 @@ route::get('/resell_details/{id}',[HomeController::class,'resell_details']);
 route::post('/resell_order/{id}',[HomeController::class,'resell_order']);
 route::get('/show_resell_order',[HomeController::class,'show_resell_order']);
 route::get('/cancel_resell/{id}',[HomeController::class,'cancel_resell']);
+route::post('/add_comment',[HomeController::class,'add_comment']);
+route::post('/add_reply',[HomeController::class,'add_reply']);
+route::get('/product_search',[HomeController::class,'product_search']);
+route::get('/resell_search',[HomeController::class,'resell_search']);
+route::get('/productpage_search',[HomeController::class,'productpage_search']);
+route::get('/resellpage_search',[HomeController::class,'resellpage_search']);
 
 route::get('/view_resell',[UserprofileController::class,'view_resell']);
 route::post('/add_resell',[UserprofileController::class,'add_resell']);

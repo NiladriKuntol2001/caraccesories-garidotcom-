@@ -122,7 +122,7 @@
                   </select>
                 </div>
                 <div class="btn-box">                 
-                  <input type="submit" value="Book Garage" class="btn btn-primary">
+                  <input type="submit" value="Book Garage" class="btn btn-warning">
                 </div>
               </form>
 

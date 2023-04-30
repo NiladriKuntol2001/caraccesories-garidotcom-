@@ -15,6 +15,8 @@ use App\Models\Userprofile;
 use App\Models\Resell;
 use App\Models\Reorder;
 use App\Models\Recycle;
+use App\Models\Comment;
+use App\Models\Reply;
 use Session;
 use Stripe;
 
@@ -24,7 +26,9 @@ class HomeController extends Controller
     {
         $product=Product::paginate(9);
         $resell=resell::paginate(9);
-        return view('home.userpage', compact('product','resell'));
+        $comment=comment::orderby('id','desc')->get();
+        $reply=reply::all();
+        return view('home.userpage', compact('product','resell','comment','reply'));
     }
 
     public function redirect()
@@ -64,7 +68,9 @@ class HomeController extends Controller
         {
             $product=Product::paginate(9);
             $resell=resell::paginate(9);
-            return view('home.userpage', compact('product','resell'));
+            $comment=comment::orderby('id','desc')->get();
+            $reply=reply::all();
+            return view('home.userpage', compact('product','resell','comment','reply'));
         }
     }
 
@@ -450,5 +456,74 @@ class HomeController extends Controller
         {
             return redirect('login');
         }
+    }
+
+    public function product_search(Request $request)
+    {
+        $comment=comment::orderby('id','desc')->get();
+        $reply=reply::all();
+        $resell=resell::paginate(9);
+        $search_text=$request->search;
+        $product=product::where('title','LIKE',"%$search_text%")->orWhere('category','LIKE',"%$search_text%")->paginate(10);
+        return view('home.userpage', compact('product','comment','reply','resell'));
+    }
+
+    public function add_comment(Request $request)
+    {
+        if(Auth::id())
+        {
+            $comment= new comment;
+            $comment->name=Auth::user()->name;
+            $comment->user_id=Auth::user()->id;
+            $comment->review=$request->review;
+            $comment->save();
+            return redirect()->back();
+        }
+        else
+        {
+            return redirect('login');
+        }
+    }
+
+    public function add_reply(Request $request)
+    {
+        if(Auth::id())
+        {
+            $reply= new reply;
+            $reply->name=Auth::user()->name;
+            $reply->user_id=Auth::user()->id;
+            $reply->review_id=$request->commentId;
+            $reply->reply=$request->reply;
+            $reply->save();
+            return redirect()->back();
+        }
+        else
+        {
+            return redirect('login');
+        }
+    }
+
+    public function resell_search(Request $request)
+    {
+        $comment=comment::orderby('id','desc')->get();
+        $reply=reply::all();
+        $product=product::paginate(10);
+        $search_text=$request->search;
+        $resell=resell::where('title','LIKE',"%$search_text%")->orWhere('category','LIKE',"%$search_text%")->paginate(9);
+        return view('home.userpage', compact('product','comment','reply','resell'));
+    }
+
+    public function productpage_search(Request $request)
+    {
+        $search_text=$request->search;
+        $product=product::where('title','LIKE',"%$search_text%")->orWhere('category','LIKE',"%$search_text%")->get();
+        return view('home.product_page', compact('product'));
+    }
+
+    public function resellpage_search(Request $request)
+    {
+        $search_text=$request->search;
+        $resell=resell::where('title','LIKE',"%$search_text%")->orWhere('category','LIKE',"%$search_text%")->get();
+        return view('home.resell_product', compact('resell'));
     }
 }
